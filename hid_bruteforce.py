@@ -1,14 +1,4 @@
 #!/usr/bin/python3
-#
-#   /\_____ ______ _______/\_________
-#.:=\___   |   __/ \_____/\______    \=== :: =>>
-#     /    |    \  /     \  /   |     \
-#    /     _     \/       \/    |      \
-#  _/      |      \__      \_   :       \
-#  \       |        /       /           /
-#   \______|       /____   /_____      /Bruteforcer..
-#.::= =====|______/====|__/=====|_____/===::>> v1.0
-#
 # Script to bruteforce a lockscreen emulating mousemovements via OTG.
 # Should not work on modern Android due to lockscreen timemouts increasing.
 #
@@ -52,17 +42,13 @@ def reset_mouse_pointer():
     time.sleep(2)
 
 if __name__ == "__main__":
-
-
-if __name__ == "__main__":
     print(f"HID Bruteforcer v1.0 - https://github.com/magpol")
     if len(sys.argv) != 2:
         print("Usage: python script.py patterns.txt")
         sys.exit(1)
 
     filename = sys.argv[1]
-
-
+    
     try:
         with open(filename, "r") as file:
             lines = file.readlines()
