@@ -20,6 +20,7 @@ MAX_ATTEMPTS = 5
 MAX_ATTEMPTS_TIMEOUT = 32
 current_position = (0, 0)
 
+
 def calculate_pixel_difference(point1, point2):
     x1, y1 = POINTS[point1 - 1]
     x2, y2 = POINTS[point2 - 1]
@@ -40,7 +41,7 @@ def move_mouse_to_point(x, y, avoid_point=None):
         avoid_x, avoid_y = POINTS[avoid_point - 1]
         distance_to_avoid = ((current_position[0] - avoid_x) ** 2 + (current_position[1] - avoid_y) ** 2) ** 0.5
 
-        if distance_to_avoid < 100:
+        if distance_to_avoid < 100 and distance_to_avoid > 0:
             ratio = 100 / distance_to_avoid
             relative_x += (current_position[0] - avoid_x) * (1 - ratio)
             relative_y += (current_position[1] - avoid_y) * (1 - ratio)
@@ -96,6 +97,8 @@ def move_to_point(point):
         m.left_click(release=False)
         time.sleep(1)
 
+
+
 def reset_mouse_pointer():
     global current_position
     for _ in range(10):
@@ -103,10 +106,11 @@ def reset_mouse_pointer():
     current_position = (0, 0)
     time.sleep(1)
 
+
 if __name__ == "__main__":
     print(f"HID Bruteforcer v1.0 - https://github.com/magpol")
     if len(sys.argv) != 2:
-        print("Usage: python script.py patterns.txt")
+        print("Usage: python hid_bruteforce.py INPUTFILE")
         sys.exit(1)
     if len(sys.argv[1]) == 1:
         reset_mouse_pointer()
@@ -139,6 +143,8 @@ if __name__ == "__main__":
             print(f"Attempt {counter} of 5")
 
             if counter >= MAX_ATTEMPTS:
+                k.press([], KeyCodes.KEY_ENTER)
+                k.press([], KeyCodes.KEY_ENTER)
                 print("Waiting 32 seconds...")
                 time.sleep(MAX_ATTEMPTS_TIMEOUT)
                 counter = 0
