@@ -1,10 +1,21 @@
 # Android Pattern Lockscreen Bruteforce
 
-This script enables bruteforcing the pattern lockscreen on an Android device by emulating mouse inputs through a Raspberry Pi Zero OTG.<br />
+This script bruteforces the *pattern* lockscreen on an Android device by emulating mouse inputs through a Raspberry Pi Zero OTG.<br /><br />
+<pre align="center">
+  +-----+            +--+  OTG   +-----+
+  |     |            |  |        |     |
+  |     |   -------> |Pi| -----> |phone|
++-+-----+-+          |  |        |     |
+|   PC    |          |  |        |     |
++---------+          +--+        +-----+
+</pre>
+
 Please note that it may *not* be effective on modern Android devices due to increased lockscreen timeouts.
 
 **Requirements:**
-- Raspberry Pi Zero or Raspberry Pi 4 running Raspbian with a kernel version > 6.1
+- Raspberry Pi Zero.<br />
+or<br />
+- Raspberry Pi 4 running Raspbian with a kernel version > 6.1
 
 ## Step 0: Configure Your Raspberry Pi
 - Install your preferred operating system; I recommend using full Raspbian.
@@ -15,7 +26,7 @@ Please note that it may *not* be effective on modern Android devices due to incr
 
 ## Step 2: Configure
 - Adjust values in the POINTS list to match the specific layout of your device:<br />
-  Example: `POINTS = [(60, 50), (120, 50), (180, 50), (60, 100), (120, 100), (180, 100), (60, 150), (120, 150), (180, 150)]`<br />
+  Example: `POINTS = [(0,0),(60, 50), (120, 50), (180, 50), (60, 100), (120, 100), (180, 100), (60, 150), (120, 150), (180, 150)]`<br />
   (Values matching the grid on a Sony Z1)
 
 ## Step 3: Configure the List of Patterns
